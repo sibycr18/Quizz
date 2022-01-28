@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ASJ Quiz</string>
+    <string name="todo">TODO</string>
+    <string name="asj_quiz_app">ASJ Quiz App</string>
+    <string name="start">Start</string>
+    <string name="points">Points :</string>
+    <string name="question_number">Question Number :</string>
+    <string name="question">Question</string>
+    <string name="radiobutton1">RadioButton</string>
+    <string name="radiobutton2">RadioButton</string>
+    <string name="radiobutton3">RadioButton</string>
+    <string name="radiobutton4">RadioButton</string>
+    <string name="submit">Submit</string>
+    <string name="you_scored">You Scored</string>
+    <string name="_50_50">50/50</string>
+    <string name="developed_by_gdsc_mce">Developed by Siby C.R.</string>
+    <string name="back_to_home">Back to Home</string>
+</resources>
