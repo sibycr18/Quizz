@@ -3,7 +3,7 @@
     <string name="todo">TODO</string>
     <string name="asj_quiz_app">Quizz</string>
     <string name="start">Start</string>
-    <string name="points">Points :</string>
+    <string name="points">Points : 0</string>
     <string name="question_number">Question Number :</string>
     <string name="question">Question</string>
     <string name="radiobutton1">RadioButton</string>

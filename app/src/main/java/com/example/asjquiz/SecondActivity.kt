@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
@@ -18,6 +19,9 @@ class SecondActivity : AppCompatActivity() {
     private lateinit var OptionText3 : RadioButton
     private lateinit var OptionText4 : RadioButton
     private lateinit var submitButton : Button
+    private lateinit var intent2 : Intent
+    private lateinit var answer : String
+    private var score : Int = 0
 
     private lateinit var QuestionBank : ArrayList<Question>
     private var QuestionNo : Int = 0
@@ -42,8 +46,10 @@ class SecondActivity : AppCompatActivity() {
         QuestionNo = 0
 
 
+        intent2 = Intent (this , ThirdActivity::class.java )
 
-        val intent2 = Intent (this ,ThirdActivity::class.java )
+
+
 
 
 
@@ -53,6 +59,17 @@ class SecondActivity : AppCompatActivity() {
         initListeners()
         display(QuestionNo)
 
+    }
+
+    fun clearAll(){
+        OptionText1.isChecked = false
+        OptionText2.isChecked = false
+        OptionText3.isChecked = false
+        OptionText4.isChecked = false
+    }
+
+    fun isCorrect(value : String) : Boolean {
+        return answer == value
     }
 
     @SuppressLint("SetTextI18n")
@@ -72,90 +89,126 @@ class SecondActivity : AppCompatActivity() {
         QuestionBank.add(
             Question(
                 "How do we interpret a dummy variable coefficient?  " ,
-                "a. The difference between two means" ,
-                "b. The difference between two coefficients" ,
-                "c. The difference between two R-square values" ,
-                "d. None of the above" ,
-                "a. The difference between two means"
+                "The difference between two means" ,
+                "The difference between two coefficients" ,
+                "The difference between two R-square values" ,
+                "None of the above" ,
+                "The difference between two means"
             )
         )
 
         QuestionBank.add(
             Question(
                 "'OS' computer abbreviation usually means?" ,
-                "a. Order of Significance" ,
-                "b. Open Software" ,
-                "c. Operating System" ,
-                "d. Optical Sensor" ,
-                "a. Operating System"
+                "Order of Significance" ,
+                "Open Software" ,
+                "Operating System" ,
+                "Optical Sensor" ,
+                "Operating System"
             )
         )
 
         QuestionBank.add(
             Question(
                 "'.MOV' extension refers usually to what kind of file?" ,
-                "a. Image file" ,
-                "b. Animation/movie file" ,
-                "c. Audio file" ,
-                "d. MS Office document" ,
-                "a. Animation/movie file"
+                "Image file" ,
+                "Animation/movie file" ,
+                "Audio file" ,
+                "MS Office document" ,
+                "Animation/movie file"
             )
         )
 
         QuestionBank.add(
             Question(
                 "What does SSL stand for?" ,
-                "a. Secure Socket Layer" ,
-                "b. System Socket Layer" ,
-                "c. Superuser System Login" ,
-                "d. Secure System Login" ,
-                "a. Secure Socket Layer"
+                "Secure Socket Layer" ,
+                "System Socket Layer" ,
+                "Superuser System Login" ,
+                "Secure System Login" ,
+                "Secure Socket Layer"
+            )
+        )
+
+        QuestionBank.add(
+            Question(
+                "Which of the following numbers is farthest from the number 0 on the number line?" ,
+                "5" ,
+                "-5" ,
+                "0" ,
+                "10" ,
+                "10"
             )
         )
 
 
     }
 
+    @SuppressLint("SetTextI18n")
     fun initListeners() {
 
         PointsText.setOnClickListener {
+            clearAll()
 
         }
 
         QSText.setOnClickListener {
-
+            clearAll()
         }
 
         OptionText1.setOnClickListener {
-
+            clearAll()
+            OptionText1.isChecked = true
+            answer = OptionText1.text.toString()
         }
 
         OptionText2.setOnClickListener {
+            clearAll()
+            OptionText2.isChecked = true
+            answer = OptionText2.text.toString()
 
         }
 
         OptionText3.setOnClickListener {
-
+            clearAll()
+            OptionText3.isChecked = true
+            answer = OptionText3.text.toString()
         }
 
         OptionText4.setOnClickListener {
-
+            clearAll()
+            OptionText4.isChecked = true
+            answer = OptionText4.text.toString()
         }
 
         submitButton.setOnClickListener {
-            QuestionNo++
-            display(QuestionNo)
+            clearAll()
+
+
+            if (isCorrect(QuestionBank.get(QuestionNo).answer)) {
+                score = score + 10
+                PointsText.text = score.toString()
+            }
+
+            if (QuestionNo < (QuestionBank.size - 1)) {
+                print(intent2)
+                QuestionNo++
+                display(QuestionNo)
+            } else {
+                println("Score is" + score.toString())
+                intent2.putExtra("score" , score.toString())
+                startActivity(intent2)
+
+            }
         }
 
     }
 }
 
 data class Question(
-    var question : String ,
-    var optionA : String ,
-    var optionB : String ,
-    var optionC : String ,
-    var optionD : String ,
-    var answer : String
-
-)
+    var question: String,
+    var optionA: String,
+    var optionB: String,
+    var optionC: String,
+    var optionD: String,
+    var answer: String )

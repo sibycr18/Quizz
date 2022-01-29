@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var button1 : Button = findViewById(R.id.button1)
-        var intent : Intent = Intent (this ,SecondActivity::class.java )
+        var intent = Intent (this ,SecondActivity::class.java )
         button1.setOnClickListener {
             startActivity(intent)
             finish()
