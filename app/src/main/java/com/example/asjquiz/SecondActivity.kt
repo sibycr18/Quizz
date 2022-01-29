@@ -44,21 +44,21 @@ class SecondActivity : AppCompatActivity() {
 
 
         val intent2 = Intent (this ,ThirdActivity::class.java )
-        submitButton.setOnClickListener {
-            startActivity(intent2)
-        }
+
+
+
 
 
         setupquestion()
         initListeners()
-        display(0)
+        display(QuestionNo)
 
     }
 
     @SuppressLint("SetTextI18n")
     fun display(index : Int) {
-        QuestionNo = index + 1
-        QsNoText.text = "Question no: " + QuestionNo
+
+        QsNoText.text = "Question no: " + (index + 1).toString()
         QSText.text = QuestionBank.get(index).question
         OptionText1.text = QuestionBank.get(index).optionA
         OptionText2.text = QuestionBank.get(index).optionB
@@ -140,6 +140,11 @@ class SecondActivity : AppCompatActivity() {
 
         OptionText4.setOnClickListener {
 
+        }
+
+        submitButton.setOnClickListener {
+            QuestionNo++
+            display(QuestionNo)
         }
 
     }
