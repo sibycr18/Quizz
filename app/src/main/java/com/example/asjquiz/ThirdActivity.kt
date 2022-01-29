@@ -17,9 +17,11 @@ class ThirdActivity : AppCompatActivity() {
 
 
         var button3 : Button = findViewById(R.id.button3)
+
         var intent3 = Intent (this ,MainActivity::class.java )
         button3.setOnClickListener {
             startActivity(intent3)
+
         }
     }
 }

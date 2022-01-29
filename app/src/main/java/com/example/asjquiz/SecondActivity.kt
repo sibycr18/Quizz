@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
@@ -20,7 +19,8 @@ class SecondActivity : AppCompatActivity() {
     private lateinit var OptionText4 : RadioButton
     private lateinit var submitButton : Button
     private lateinit var intent2 : Intent
-    private lateinit var answer : String
+    private lateinit var errorText : TextView
+    var answer : String = ""
     private var score : Int = 0
 
     private lateinit var QuestionBank : ArrayList<Question>
@@ -40,6 +40,8 @@ class SecondActivity : AppCompatActivity() {
         OptionText3 = findViewById(R.id.radioButton3)
         OptionText4 = findViewById(R.id.radioButton4)
 
+        errorText = findViewById(R.id.textView9)
+        errorText.text = ""
         submitButton = findViewById(R.id.button2)
 
         QuestionBank = ArrayList()
@@ -182,24 +184,37 @@ class SecondActivity : AppCompatActivity() {
         }
 
         submitButton.setOnClickListener {
-            clearAll()
+
 
 
             if (isCorrect(QuestionBank.get(QuestionNo).answer)) {
                 score = score + 10
                 PointsText.text = score.toString()
             }
-
             if (QuestionNo < (QuestionBank.size - 1)) {
-                print(intent2)
-                QuestionNo++
-                display(QuestionNo)
+                println(true or false or false or false)
+                println("1 is " + OptionText1.isChecked)
+                println("2 is " + OptionText2.isChecked)
+                println("3 is " + OptionText3.isChecked)
+                println("4 is " + OptionText4.isChecked)
+                println((OptionText1.isChecked or OptionText2.isChecked or OptionText3.isChecked or OptionText4.isChecked))
+                var allUnchecked : Boolean = (OptionText1.isChecked or OptionText2.isChecked or OptionText3.isChecked or OptionText4.isChecked)
+                println("Value of allUnchecked is " + allUnchecked)
+                if (allUnchecked) {
+                    QuestionNo++
+                    display(QuestionNo)
+                    errorText.text = ""
+
+                } else {
+                    errorText.text = "Please select an Option!"
+
+                }
             } else {
-                println("Score is" + score.toString())
                 intent2.putExtra("score" , score.toString())
                 startActivity(intent2)
 
             }
+            clearAll()
         }
 
     }
