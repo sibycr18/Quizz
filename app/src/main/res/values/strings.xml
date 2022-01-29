@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">ASJ Quiz</string>
+    <string name="app_name">Quizz</string>
     <string name="todo">TODO</string>
-    <string name="asj_quiz_app">ASJ Quiz App</string>
+    <string name="asj_quiz_app">Quizz</string>
     <string name="start">Start</string>
     <string name="points">Points :</string>
     <string name="question_number">Question Number :</string>

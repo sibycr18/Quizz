@@ -1,5 +1,6 @@
 package com.example.asjquiz
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.TextView
 class SecondActivity : AppCompatActivity() {
 
     private lateinit var PointsText : TextView
+    private lateinit var QsNoText : TextView
     private lateinit var QSText : TextView
     private lateinit var OptionText1 : RadioButton
     private lateinit var OptionText2 : RadioButton
@@ -26,6 +28,7 @@ class SecondActivity : AppCompatActivity() {
 
 
         PointsText = findViewById(R.id.textView3)
+        QsNoText = findViewById(R.id.textView4)
         QSText = findViewById(R.id.textView5)
 
         OptionText1 = findViewById(R.id.radioButton1)
@@ -52,8 +55,10 @@ class SecondActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     fun display(index : Int) {
-
+        QuestionNo = index + 1
+        QsNoText.text = "Question no: " + QuestionNo
         QSText.text = QuestionBank.get(index).question
         OptionText1.text = QuestionBank.get(index).optionA
         OptionText2.text = QuestionBank.get(index).optionB
