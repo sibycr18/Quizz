@@ -212,12 +212,15 @@ class SecondActivity : AppCompatActivity() {
             } else {
                 intent2.putExtra("score" , score.toString())
                 startActivity(intent2)
+                finish()
+
 
             }
             clearAll()
         }
 
     }
+
 }
 
 data class Question(
