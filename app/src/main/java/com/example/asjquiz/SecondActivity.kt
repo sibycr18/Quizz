@@ -26,37 +26,29 @@ class SecondActivity : AppCompatActivity() {
     private lateinit var QuestionBank : ArrayList<Question>
     private var QuestionNo : Int = 0
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
 
-        PointsText = findViewById(R.id.textView3)
-        QsNoText = findViewById(R.id.textView4)
-        QSText = findViewById(R.id.textView5)
-
+        PointsText  = findViewById(R.id.textView3)
+        QsNoText    = findViewById(R.id.textView4)
+        QSText      = findViewById(R.id.textView5)
         OptionText1 = findViewById(R.id.radioButton1)
         OptionText2 = findViewById(R.id.radioButton2)
         OptionText3 = findViewById(R.id.radioButton3)
         OptionText4 = findViewById(R.id.radioButton4)
 
-        errorText = findViewById(R.id.textView9)
-        errorText.text = ""
-        submitButton = findViewById(R.id.button2)
+        errorText         = findViewById(R.id.textView9)
+        errorText.text    = ""
+        submitButton      = findViewById(R.id.button2)
         submitButton.text = "NEXT"
 
         QuestionBank = ArrayList()
-        QuestionNo = 0
-
+        QuestionNo   = 0
 
         intent2 = Intent (this , ThirdActivity::class.java )
-
-
-
-
-
-
-
 
         setupquestion()
         initListeners()
@@ -78,8 +70,8 @@ class SecondActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun display(index : Int) {
 
-        QsNoText.text = "Question no: " + (index + 1).toString() + " of 5"
-        QSText.text = "Q)  " + QuestionBank.get(index).question
+        QsNoText.text    = "Question no: " + (index + 1).toString() + " of 5"
+        QSText.text      = "Q)  " + QuestionBank.get(index).question
         OptionText1.text = "a)  " + QuestionBank.get(index).optionA
         OptionText2.text = "b)  " + QuestionBank.get(index).optionB
         OptionText3.text = "c)  " + QuestionBank.get(index).optionC
@@ -143,8 +135,6 @@ class SecondActivity : AppCompatActivity() {
                 "10"
             )
         )
-
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -152,7 +142,6 @@ class SecondActivity : AppCompatActivity() {
 
         PointsText.setOnClickListener {
             clearAll()
-
         }
 
         QSText.setOnClickListener {
@@ -186,24 +175,17 @@ class SecondActivity : AppCompatActivity() {
 
 
         submitButton.setOnClickListener {
-
-            var optionSelected : Boolean = (OptionText1.isChecked or OptionText2.isChecked or OptionText3.isChecked or OptionText4.isChecked)
-
+            val optionSelected : Boolean = (OptionText1.isChecked or OptionText2.isChecked or OptionText3.isChecked or OptionText4.isChecked)
             if (isCorrect(QuestionBank.get(QuestionNo).answer)) {
                 score = score + 10
                 PointsText.text = "Points: " + score.toString()
             }
 
-
-
-
             if (QuestionNo < (QuestionBank.size - 1)) {
-
                 if (optionSelected) {
                     QuestionNo++
                     display(QuestionNo)
                     errorText.text = ""
-
                 } else {
                     errorText.text = "Please select an Option!"
                 }
@@ -231,9 +213,10 @@ class SecondActivity : AppCompatActivity() {
 }
 
 data class Question(
-    var question: String,
-    var optionA: String,
-    var optionB: String,
-    var optionC: String,
-    var optionD: String,
-    var answer: String )
+    var question : String,
+    var optionA  : String,
+    var optionB  : String,
+    var optionC  : String,
+    var optionD  : String,
+    var answer   : String
+    )
