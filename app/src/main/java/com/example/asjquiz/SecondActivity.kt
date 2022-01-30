@@ -72,10 +72,10 @@ class SecondActivity : AppCompatActivity() {
 
         QsNoText.text    = "Question no: " + (index + 1).toString() + " of 5"
         QSText.text      = "Q)  " + QuestionBank.get(index).question
-        OptionText1.text = "a)  " + QuestionBank.get(index).optionA
-        OptionText2.text = "b)  " + QuestionBank.get(index).optionB
-        OptionText3.text = "c)  " + QuestionBank.get(index).optionC
-        OptionText4.text = "d)  " + QuestionBank.get(index).optionD
+        OptionText1.text = QuestionBank.get(index).optionA
+        OptionText2.text = QuestionBank.get(index).optionB
+        OptionText3.text = QuestionBank.get(index).optionC
+        OptionText4.text = QuestionBank.get(index).optionD
 
     }
 
