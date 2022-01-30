@@ -187,20 +187,19 @@ class SecondActivity : AppCompatActivity() {
 
         submitButton.setOnClickListener {
 
+            var optionSelected : Boolean = (OptionText1.isChecked or OptionText2.isChecked or OptionText3.isChecked or OptionText4.isChecked)
+
             if (isCorrect(QuestionBank.get(QuestionNo).answer)) {
                 score = score + 10
                 PointsText.text = "Points: " + score.toString()
             }
 
-            if (!(QuestionNo < (QuestionBank.size - 2))) {
-                submitButton.text = "SUBMIT"
-            }
+
 
 
             if (QuestionNo < (QuestionBank.size - 1)) {
 
-                var allUnchecked : Boolean = (OptionText1.isChecked or OptionText2.isChecked or OptionText3.isChecked or OptionText4.isChecked)
-                if (allUnchecked) {
+                if (optionSelected) {
                     QuestionNo++
                     display(QuestionNo)
                     errorText.text = ""
@@ -209,10 +208,18 @@ class SecondActivity : AppCompatActivity() {
                     errorText.text = "Please select an Option!"
                 }
 
+                if ((QuestionNo) == QuestionBank.size - 1) {
+                    submitButton.text = "SUBMIT"
+                }
+
             } else {
-                intent2.putExtra("score" , score.toString())
-                startActivity(intent2)
-                finish()
+                if (optionSelected) {
+                    intent2.putExtra("score", score.toString())
+                    startActivity(intent2)
+                    finish()
+                } else {
+                    errorText.text = "Please select an Option!"
+                }
 
 
             }
