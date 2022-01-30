@@ -12,9 +12,15 @@ class ThirdActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
+        var congo : TextView = findViewById(R.id.textView)
 
         var finalScore : TextView = findViewById(R.id.textView7)
-        finalScore.text = intent.getStringExtra("score").toString() + "/50"
+        finalScore.text = intent.getStringExtra("score").toString()
+        if ((finalScore.text) == "0") {
+            congo.text = "Oops!"
+        } else {
+            congo.text = "Congratulations!"
+        }
 
         var button3 : Button = findViewById(R.id.button3)
 
