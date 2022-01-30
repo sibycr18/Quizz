@@ -31,7 +31,7 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#3583b0"
+        android:backgroundTint="#0E4A88"
         android:fontFamily="@font/lato"
         android:shadowColor="#494949"
         android:shadowRadius="5"

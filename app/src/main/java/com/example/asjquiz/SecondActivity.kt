@@ -43,6 +43,7 @@ class SecondActivity : AppCompatActivity() {
         errorText = findViewById(R.id.textView9)
         errorText.text = ""
         submitButton = findViewById(R.id.button2)
+        submitButton.text = "NEXT"
 
         QuestionBank = ArrayList()
         QuestionNo = 0
@@ -77,12 +78,12 @@ class SecondActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun display(index : Int) {
 
-        QsNoText.text = "Question no: " + (index + 1).toString()
-        QSText.text = QuestionBank.get(index).question
-        OptionText1.text = QuestionBank.get(index).optionA
-        OptionText2.text = QuestionBank.get(index).optionB
-        OptionText3.text = QuestionBank.get(index).optionC
-        OptionText4.text = QuestionBank.get(index).optionD
+        QsNoText.text = "Question no: " + (index + 1).toString() + " of 5"
+        QSText.text = "Q)  " + QuestionBank.get(index).question
+        OptionText1.text = "a)  " + QuestionBank.get(index).optionA
+        OptionText2.text = "b)  " + QuestionBank.get(index).optionB
+        OptionText3.text = "c)  " + QuestionBank.get(index).optionC
+        OptionText4.text = "d)  " + QuestionBank.get(index).optionD
 
     }
 
@@ -183,23 +184,22 @@ class SecondActivity : AppCompatActivity() {
             answer = OptionText4.text.toString()
         }
 
+
         submitButton.setOnClickListener {
-
-
 
             if (isCorrect(QuestionBank.get(QuestionNo).answer)) {
                 score = score + 10
-                PointsText.text = score.toString()
+                PointsText.text = "Points: " + score.toString()
             }
+
+            if (!(QuestionNo < (QuestionBank.size - 2))) {
+                submitButton.text = "SUBMIT"
+            }
+
+
             if (QuestionNo < (QuestionBank.size - 1)) {
-                println(true or false or false or false)
-                println("1 is " + OptionText1.isChecked)
-                println("2 is " + OptionText2.isChecked)
-                println("3 is " + OptionText3.isChecked)
-                println("4 is " + OptionText4.isChecked)
-                println((OptionText1.isChecked or OptionText2.isChecked or OptionText3.isChecked or OptionText4.isChecked))
+
                 var allUnchecked : Boolean = (OptionText1.isChecked or OptionText2.isChecked or OptionText3.isChecked or OptionText4.isChecked)
-                println("Value of allUnchecked is " + allUnchecked)
                 if (allUnchecked) {
                     QuestionNo++
                     display(QuestionNo)
@@ -207,8 +207,8 @@ class SecondActivity : AppCompatActivity() {
 
                 } else {
                     errorText.text = "Please select an Option!"
-
                 }
+
             } else {
                 intent2.putExtra("score" , score.toString())
                 startActivity(intent2)
