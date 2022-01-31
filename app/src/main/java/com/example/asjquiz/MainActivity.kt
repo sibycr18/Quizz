@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.setBackgroundDrawable((getDrawable(R.color.purple_500)))
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
 
         var button1 : Button = findViewById(R.id.button1)
         var intent = Intent (this ,SecondActivity::class.java )

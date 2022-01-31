@@ -59,7 +59,7 @@
         android:layout_marginTop="72dp"
         android:fontFamily="@font/lato"
         android:text="@string/points"
-        android:textColor="#43A047"
+        android:textColor="#0AA361"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

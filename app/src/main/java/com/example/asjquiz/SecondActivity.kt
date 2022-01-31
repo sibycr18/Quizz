@@ -31,7 +31,8 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         supportActionBar?.setBackgroundDrawable((getDrawable(R.color.purple_500)))
-
+//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher.png)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
 
         PointsText  = findViewById(R.id.textView3)

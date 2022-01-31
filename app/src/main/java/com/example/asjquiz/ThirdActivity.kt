@@ -13,6 +13,7 @@ class ThirdActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
         supportActionBar?.setBackgroundDrawable((getDrawable(R.color.purple_500)))
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         var congo : TextView = findViewById(R.id.textView)
 
