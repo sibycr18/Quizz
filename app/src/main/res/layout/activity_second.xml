@@ -20,6 +20,7 @@
         android:shadowColor="#787878"
         android:shadowRadius="5"
         android:text="@string/submit"
+        android:textColor="#FFFFFF"
         android:textSize="19sp"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"

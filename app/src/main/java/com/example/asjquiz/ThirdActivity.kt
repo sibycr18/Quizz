@@ -12,6 +12,8 @@ class ThirdActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
+        supportActionBar?.setBackgroundDrawable((getDrawable(R.color.purple_500)))
+
         var congo : TextView = findViewById(R.id.textView)
 
         var finalScore : TextView = findViewById(R.id.textView7)

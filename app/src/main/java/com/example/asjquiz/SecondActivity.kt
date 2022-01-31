@@ -30,6 +30,8 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
+        supportActionBar?.setBackgroundDrawable((getDrawable(R.color.purple_500)))
+
 
 
         PointsText  = findViewById(R.id.textView3)
