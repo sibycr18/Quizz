@@ -209,13 +209,10 @@ class SecondActivity : AppCompatActivity() {
                     errorText.text = "Please select an Option!"
                 }
 
-
             }
             clearAll()
         }
-
     }
-
 }
 
 data class Question(
