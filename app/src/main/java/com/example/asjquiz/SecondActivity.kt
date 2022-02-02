@@ -13,77 +13,76 @@ class SecondActivity : AppCompatActivity() {
     private lateinit var pointsText   : TextView
     private lateinit var quesNoText   : TextView
     private lateinit var questionText : TextView
-    private lateinit var OptionText1  : RadioButton
-    private lateinit var OptionText2  : RadioButton
-    private lateinit var OptionText3  : RadioButton
-    private lateinit var OptionText4  : RadioButton
+    private lateinit var optionText1  : RadioButton
+    private lateinit var optionText2  : RadioButton
+    private lateinit var optionText3  : RadioButton
+    private lateinit var optionText4  : RadioButton
     private lateinit var submitButton : Button
     private lateinit var intent2      : Intent
     private lateinit var errorText    : TextView
+    private lateinit var questionBank : ArrayList<Question>
+
+    private var score      : Int = 0
+    private var questionNo : Int = 0
     var answer : String = ""
-    private var score : Int = 0
 
-    private lateinit var QuestionBank : ArrayList<Question>
-    private var QuestionNo : Int = 0
-
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         supportActionBar?.setBackgroundDrawable((getDrawable(R.color.purple_500)))
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-
         pointsText   = findViewById(R.id.textView3)
         quesNoText   = findViewById(R.id.textView4)
         questionText = findViewById(R.id.textView5)
-        OptionText1  = findViewById(R.id.radioButton1)
-        OptionText2  = findViewById(R.id.radioButton2)
-        OptionText3  = findViewById(R.id.radioButton3)
-        OptionText4  = findViewById(R.id.radioButton4)
+        optionText1  = findViewById(R.id.radioButton1)
+        optionText2  = findViewById(R.id.radioButton2)
+        optionText3  = findViewById(R.id.radioButton3)
+        optionText4  = findViewById(R.id.radioButton4)
 
         errorText         = findViewById(R.id.textView9)
         errorText.text    = ""
         submitButton      = findViewById(R.id.button2)
         submitButton.text = "NEXT"
 
-        QuestionBank = ArrayList()
-        QuestionNo   = 0
+        questionBank = ArrayList()
+        questionNo   = 0
 
         intent2 = Intent (this , ThirdActivity::class.java )
 
         setupquestion()
         initListeners()
-        display(QuestionNo)
-
+        display(questionNo)
     }
+
 
     fun clearAll(){
-        OptionText1.isChecked = false
-        OptionText2.isChecked = false
-        OptionText3.isChecked = false
-        OptionText4.isChecked = false
+        optionText1.isChecked = false
+        optionText2.isChecked = false
+        optionText3.isChecked = false
+        optionText4.isChecked = false
     }
+
 
     fun isCorrect(value : String) : Boolean {
         return answer == value
     }
 
+
     @SuppressLint("SetTextI18n")
     fun display(index : Int) {
-
         quesNoText.text   = "Question no: " + (index + 1).toString() + " of 5"
-        questionText.text = "Q)  " + QuestionBank.get(index).question
-        OptionText1.text  = QuestionBank.get(index).optionA
-        OptionText2.text  = QuestionBank.get(index).optionB
-        OptionText3.text  = QuestionBank.get(index).optionC
-        OptionText4.text  = QuestionBank.get(index).optionD
-
+        questionText.text = "Q)  " + questionBank.get(index).question
+        optionText1.text  = questionBank.get(index).optionA
+        optionText2.text  = questionBank.get(index).optionB
+        optionText3.text  = questionBank.get(index).optionC
+        optionText4.text  = questionBank.get(index).optionD
     }
 
 
     fun setupquestion() {
-        QuestionBank.add(
+        questionBank.add(
             Question(
                 "How do we interpret a dummy variable coefficient?  " ,
                 "The difference between two means" ,
@@ -94,7 +93,7 @@ class SecondActivity : AppCompatActivity() {
             )
         )
 
-        QuestionBank.add(
+        questionBank.add(
             Question(
                 "'OS' computer abbreviation usually means?" ,
                 "Order of Significance" ,
@@ -105,7 +104,7 @@ class SecondActivity : AppCompatActivity() {
             )
         )
 
-        QuestionBank.add(
+        questionBank.add(
             Question(
                 "'.MOV' extension refers usually to what kind of file?" ,
                 "Image file" ,
@@ -116,7 +115,7 @@ class SecondActivity : AppCompatActivity() {
             )
         )
 
-        QuestionBank.add(
+        questionBank.add(
             Question(
                 "What does SSL stand for?" ,
                 "Secure Socket Layer" ,
@@ -127,7 +126,7 @@ class SecondActivity : AppCompatActivity() {
             )
         )
 
-        QuestionBank.add(
+        questionBank.add(
             Question(
                 "Which of the following numbers is farthest from the number 0 on the number line?" ,
                 "5" ,
@@ -141,53 +140,53 @@ class SecondActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     fun initListeners() {
-        OptionText1.setOnClickListener {
+        optionText1.setOnClickListener {
             clearAll()
-            OptionText1.isChecked = true
-            answer = OptionText1.text.toString()
+            optionText1.isChecked = true
+            answer = optionText1.text.toString()
         }
 
-        OptionText2.setOnClickListener {
+        optionText2.setOnClickListener {
             clearAll()
-            OptionText2.isChecked = true
-            answer = OptionText2.text.toString()
+            optionText2.isChecked = true
+            answer = optionText2.text.toString()
 
         }
 
-        OptionText3.setOnClickListener {
+        optionText3.setOnClickListener {
             clearAll()
-            OptionText3.isChecked = true
-            answer = OptionText3.text.toString()
+            optionText3.isChecked = true
+            answer = optionText3.text.toString()
         }
 
-        OptionText4.setOnClickListener {
+        optionText4.setOnClickListener {
             clearAll()
-            OptionText4.isChecked = true
-            answer = OptionText4.text.toString()
+            optionText4.isChecked = true
+            answer = optionText4.text.toString()
         }
 
 
         submitButton.setOnClickListener {
-            val optionSelected : Boolean = (OptionText1.isChecked or
-                    OptionText2.isChecked or
-                    OptionText3.isChecked or
-                    OptionText4.isChecked)
+            val optionSelected : Boolean = (optionText1.isChecked or
+                    optionText2.isChecked or
+                    optionText3.isChecked or
+                    optionText4.isChecked)
 
-            if (isCorrect(QuestionBank.get(QuestionNo).answer)) {
+            if (isCorrect(questionBank.get(questionNo).answer)) {
                 score = score + 10
                 pointsText.text = "Points: " + score.toString()
             }
 
-            if (QuestionNo < (QuestionBank.size - 1)) {
+            if (questionNo < (questionBank.size - 1)) {
                 if (optionSelected) {
-                    QuestionNo++
-                    display(QuestionNo)
+                    questionNo++
+                    display(questionNo)
                     errorText.text = ""
                 } else {
                     errorText.text = "Please select an Option!"
                 }
 
-                if ((QuestionNo) == QuestionBank.size - 1) {
+                if ((questionNo) == questionBank.size - 1) {
                     submitButton.text = "SUBMIT"
                 }
 
