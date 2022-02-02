@@ -30,6 +30,7 @@ class ThirdActivity : AppCompatActivity() {
         var intent3 = Intent (this ,MainActivity::class.java )
         button3.setOnClickListener {
             startActivity(intent3)
+            finish()
         }
     }
 }
