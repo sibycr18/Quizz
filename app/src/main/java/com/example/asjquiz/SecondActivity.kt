@@ -31,7 +31,6 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         supportActionBar?.setBackgroundDrawable((getDrawable(R.color.purple_500)))
-//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_launcher.png)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
 
@@ -178,7 +177,11 @@ class SecondActivity : AppCompatActivity() {
 
 
         submitButton.setOnClickListener {
-            val optionSelected : Boolean = (OptionText1.isChecked or OptionText2.isChecked or OptionText3.isChecked or OptionText4.isChecked)
+            val optionSelected : Boolean = (OptionText1.isChecked or
+                    OptionText2.isChecked or
+                    OptionText3.isChecked or
+                    OptionText4.isChecked)
+
             if (isCorrect(QuestionBank.get(QuestionNo).answer)) {
                 score = score + 10
                 PointsText.text = "Points: " + score.toString()
